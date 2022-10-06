@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState,useEffect } from 'react';
 
 const URL_Jokes = "https://api.jokes.one/jod"
+//const URL_Weather
 
 const Joke = () =>{
   const [title, setTitle] = useState('')
@@ -84,7 +85,47 @@ return(
 }
 
 const Geolocation = () =>{
+  const [lat, setLat] = useState(0)
+  const [long, setLong] = useState(0)
 
+  useEffect(() => {
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(pos => {
+        setLat(pos.coords.latitude);
+        setLong(pos.coords.longitude);
+      },(err) => {
+        alert(err)
+      })
+    }else{
+      alert('Browser does not support Geolocation!')
+    }
+  }, [])
+  
+
+  return(
+    <p>
+      Position: {lat.toFixed(3)} , {long.toFixed(3)}
+    </p>
+  )
+}
+
+const Weather = () =>{
+  const [temp, setTemp] = useState(0);
+  const [speed, setSpeed] = useState(0);
+  const [direction, setDir] = useState(0);
+  const [description, setDescrp] = useState('');
+  const [icon, setIcon] = useState('');
+
+
+  return(
+    <>
+    <h4>The Wather at your Location:</h4>
+    <p>{temp} C&#176;</p>
+    <p>{speed} m/s {direction} degrees</p>
+    <p>{description}</p>
+    <img src={icon} alt="" />
+    </>
+  )
 }
 
 function App() {
@@ -101,6 +142,10 @@ function App() {
       <br></br>
       <h1>Excercise 3: Geolocation</h1>
       <Geolocation/>
+      <hr></hr>
+      <br></br>
+      <h1>Excercise 3: Geolocation</h1>
+      <Weather/>
     </div>
   );
 }

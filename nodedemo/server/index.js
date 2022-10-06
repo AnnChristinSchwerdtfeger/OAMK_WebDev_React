@@ -30,7 +30,7 @@ app.get("/",(req,res)=>{
 })
 */
 
-app.get("/new",(req,res)=>{
+app.post("/new",(req,res)=>{
     console.log('body:', req.body)
     names.push(req.body)
     res.status(200).json(req.body)
