@@ -43,6 +43,15 @@ function App() {
   }, [])
 */
 
+  const remove = (name) =>{
+    axios.delete(`${URL}delete/${name}`)
+      .then(()=>{
+        const tempPersons = [...persons]
+        
+        //i stopped here to read spread operator syntax! page 5 end, defining delete in frontend
+      })
+  }
+
   const save = (e) =>{
     e.preventDefault()
     const json = JSON.stringify({name: newName})

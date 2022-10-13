@@ -19,6 +19,12 @@ app.get("/",(req,res)=>{
     res.status(200).json(names)
 })
 
+app.delete("/delete/:name", (req,res) => {
+    names.splice(names.findIndex(e=>e.name===req.params.name),1)
+    console.log(names)
+    res.status(200).json(req.params.name)
+})
+
 /* #note1
 app.get("/",(req,res)=>{
     res.status(200).json(

@@ -39,6 +39,7 @@ index.js should look like:
         console.log(`server is running on port ${port}` )
     })
 ```
+-> start backend ***npm run devStart***
 
 3. create frontend: 
         - (new terminal) In the root folder run ***npm start***

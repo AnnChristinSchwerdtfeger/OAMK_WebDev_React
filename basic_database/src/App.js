@@ -39,8 +39,8 @@ function App() {
   useEffect(() => {
     axios.get(URL)
     .then((response) => {
-      setTask(response.data.result) 
-      console.log('response: ', response.data.result);
+      setTask(response.data)
+      console.log(response.data) 
     }).catch(err => {
       alert(err.response.data.error)
     })
